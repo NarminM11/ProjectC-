@@ -6,34 +6,30 @@
 #include<fstream> 
 using namespace std;
 
-void writetofile(string str,int i) {
-	ofstream fs("text.txt");
-
+void writetofile(string name, string desc, double price, int ingredients) {
+	ofstream fs("text.txt", ios::app); 
 	if (fs.is_open()) {
-		fs << str << " " << i;
+		fs << name << " | " << desc << " | " << price << " | " << ingredients << endl;
+		fs.close();
 	}
 	else {
-		throw exception("file couldn't open!!!");
+		throw runtime_error("file couldn't open!!!");
 	}
-	fs.close();
 }
 
-void readfromfile() {
-	ifstream fs("text.txt", ios::in); 
 
+void readfromfile() {
+	ifstream fs("text.txt");
 	if (fs.is_open()) {
-		string str;
-		int i = 0;
-		while (!fs.eof()) {
-			fs >> str;
-			fs >> i;			
+		string line;
+		while (getline(fs, line)) {
+			cout << line << endl;
 		}
-		cout << str << " " << i << endl;
+		fs.close();
 	}
 	else {
-		throw exception("file couldn't open!!!");
+		throw runtime_error("file couldn't open!!!");
 	}
-	fs.close();
 }
 
 class Ingredient {
@@ -140,18 +136,18 @@ public:
 
 	void DecreaseIngredient(string name, double amount) {
 		for (int i = 0; i < ingredients.Size(); ++i) {
-			if (ingredients[i].GetName() == name) { 
-				ingredients[i].DecreaseQuantity(amount); 
+			if (ingredients[i].GetName() == name) {
+				ingredients[i].DecreaseQuantity(amount);
 				break;
 			}
 		}
-	} 
+	}
 	int Size() const {
 		return foods.Size();
 	}
 
 	Food& GetFood(int index) {
-		return foods.At(index); 
+		return foods.At(index);
 	}
 
 	//hansisa ingredientin stockda olub olmamasina baxiriq
@@ -215,7 +211,7 @@ public:
 };
 
 class Budget { //restoranin budcesi
-	double balance; 
+	double balance;
 
 public:
 	Budget(double initialAmount = 0) : balance(initialAmount) {}; //default constructoru
@@ -223,13 +219,13 @@ public:
 	//eger budceye pul elave edilmeli olsa
 	bool AddFunds(double amount) {
 		if (amount > 0) {
-			balance += amount; 
+			balance += amount;
 			cout << amount << " AZN added to budget.\n";
-			return true;  
+			return true;
 		}
 		else {
 			cout << "invalid input.\n";
-			return false; 
+			return false;
 		}
 	}
 
@@ -261,68 +257,14 @@ public:
 class Admin {
 	string username;
 	string password;
-	string fullname;
-	string id;
+
 	DoubleLinkedList<Food>menu;
 public:
-	Admin() {
 
-	}
-	Admin(string username, string password, string fullname, string id) {
-		this->username = username;
-		this->password = password;
-		this->fullname = fullname;
-		/*SetUsername(username);
-		SetPassword(password);*/
-		//SetFullname(fullname);
-		this->id = id;
-	}
 
-	//getter
-	string GetUsername() const {
-		return username;
-	}
-
-	string GetPassword() const {
-		return password;
-	}
-	string GetFullname() {
-		return fullname;
-	}
-	string GetId() {
-		return id;
-	}
-
-	//setter
-	void SetFullname(string fullname) {
-		if (fullname.length() > 10) {
-			this->fullname = fullname;
-		}
-		else {
-			assert(!"invalid fullname input....");
-		}
-	}
-
-	void SetUsername(string username) {
-		if (username=="Admin") {
-			this->username = username;
-		}
-		else {
-			assert(!"invalid username input....");
-		}
-	}
-
-	void SetPassword(string password) {
-		if (password=="admin") {
-			this->password = password;
-		}
-		else {
-			assert(!"invalid password input....");
-		}
-	}
 	//methods
-	
-	
+
+
 
 	void AddNewFood(DoubleLinkedList<Food>& menu, string foodName, string description, double price, int ingredientCount, Stock& stock, Budget& budget) {
 		DoubleLinkedList<Ingredient> ingredients;
@@ -340,7 +282,7 @@ public:
 
 			cout << "Price per gram for " << ingName << ": ";
 			cin >> pricePerGram;
-			cin.ignore(); 
+			cin.ignore();
 
 			Ingredient ing(ingName, quantity, pricePerGram);
 			ingredients.AddEnd(ing);
@@ -377,7 +319,7 @@ public:
 				Ingredient ingredient = food.GetIngredients()[j];
 				if (!stock.IsIngredientInStock(ingredient.GetName(), ingredient.GetQuantity())) {
 					canSeen = false;
-					break; 
+					break;
 				}
 			}
 			if (canSeen) {
@@ -387,7 +329,7 @@ public:
 	}
 
 
-	
+
 
 };
 
@@ -462,7 +404,7 @@ public:
 		}
 
 		Food& food = items.At(index - 1);
-		food.ClearIngredients(); 
+		food.ClearIngredients();
 
 		int newCount;
 		cout << "new ingredient count: ";
@@ -572,7 +514,7 @@ public:
 	//methods
 
 	//sebete yemek elave etmek
-	void AddToBasket( Food& food) {
+	void AddToBasket(Food& food) {
 		basket.AddEnd(food);
 		cout << food.GetName() << " added to your basket!" << endl;
 	}
@@ -598,11 +540,11 @@ public:
 				Ingredient ingredient = food.GetIngredients().At(j);
 				if (!stock.IsIngredientInStock(ingredient.GetName(), ingredient.GetQuantity())) {
 					canSeen = false;
-					break;  
+					break;
 				}
 			}
 			if (canSeen) {
-				cout << i + 1 << ") " << food.GetName() << " - $" << food.GetPrice() << endl;
+				cout << i + 1 << ") " << food.GetName() << " - AZN" << food.GetPrice() << endl;
 			}
 		}
 	}
@@ -625,44 +567,6 @@ public:
 
 
 
-//manage accounts
-class AdminManager {
-private:
-	DoubleLinkedList<Admin> admins;
-
-public:
-	AdminManager() {
-		//admins.AddEnd(Admin("Admin", "admin", " Admin", "1"));
-	}
-
-	int SearchAdmin(const string& username) {
-		for (int i = 0; i < admins.Size(); ++i) {
-			if (admins.At(i).GetUsername() == username) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	bool SignIn(const string& username, const string& password) {
-		int index = SearchAdmin(username);
-		if (index == -1) {
-			assert(! "Admin tapılmadı!");
-			return false;
-		}
-
-		Admin admin = admins.At(index);
-		if (admin.GetPassword() == password) {
-			cout << "Giriş uğurludur! Xoş gəldiniz, " << admin.GetFullname() << "!\n";
-			return true;
-		}
-		else {
-			cout << "Şifrə yalnışdır!\n";
-			return false;
-		}
-	}
-
-};
 
 class UserManager {
 private:
@@ -672,15 +576,15 @@ public:
 	UserManager() {};
 	void SignUp(const string& username, const string& password) {
 		if (SearchUser(username) != -1) {
-			throw runtime_error("Bu istifadəçi adı artıq mövcuddur!");
+			throw runtime_error("this user not found");
 		}
 
 		if (username.length() <= 10) {
-			throw invalid_argument("İstifadəçi adı 10 simvoldan uzun olmalıdır!");
+			throw invalid_argument("username should be longer than 10");
 		}
 
 		if (password.length() <= 8) {
-			throw invalid_argument("Şifrə 8 simvoldan uzun olmalıdır!");
+			throw invalid_argument("password should not be longer");
 		}
 
 		User newUser(username, password);
@@ -688,18 +592,30 @@ public:
 	}
 
 	bool SignIn(const string& username, const string& password) {
+		if (username == "admin") {
+			if (password == "admin1234") {
+				return true;
+			}
+			else {
+				cout << "wrong password";
+				return false;
+			}
+		}
+
 		int index = SearchUser(username);
 		if (index == -1) {
-			throw runtime_error("İstifadəçi tapılmadı!");
+			throw string("User not found!");
 		}
 
 		if (users.At(index).GetPassword() == password) {
 			return true;
 		}
 		else {
-			throw invalid_argument("Şifrə yanlışdır!");
+			throw string("Wrong password!");
 		}
 	}
+
+
 
 	void ChangePassword(const string& username, const string& oldPassword, const string& newPassword) {
 		int index = SearchUser(username);
@@ -728,28 +644,16 @@ public:
 	}
 };
 
-/*Admin admin("Narmin", "1234567", "Narmin Murshudova", "4563479631");
-	cout << admin.GetFullname() << endl;
-	Food food1("pizza", "tasty new pizza", 10.89);
-	DoubleLinkedList<Ingredient> ingredients;
 
-	Ingredient ing1("Mozzarella", 100);
-	Ingredient ing2("BBQ souce", 50);
-
-	food1.AddIngredient(ing1);
-	food1.AddIngredient(ing2);
-	cout << "elave olundu" << endl;*/
-
-void main() {
+int main() {
 	cout << "-------------------------------------------------" << endl;
 	cout << "|                                               |" << endl;
 	cout << "|             Welcome Our Restoran              |" << endl;
 	cout << "|                                               |" << endl;
 	cout << "-------------------------------------------------" << endl;
 
-	DoubleLinkedList<Food> menu; 
+	DoubleLinkedList<Food> menu;
 	UserManager userManager;
-	AdminManager adminManager;
 	Admin admin;
 	User user;
 	Stock stock;
@@ -758,9 +662,11 @@ void main() {
 	Wallet user_wallet(50);
 	int first_choice;
 	Ingredient ingredient;
+
 	while (true) {
 		cout << "1.Admin\n2.User: ";
 		cin >> first_choice;
+
 		if (first_choice == 1) {
 			string username, password, id, fullname;
 			cin.ignore();
@@ -770,20 +676,23 @@ void main() {
 			cout << "Enter password: ";
 			getline(cin, password);
 
-			cout << "Enter fullname: ";
-			getline(cin, fullname);
+			try {
+				if (userManager.SignIn(username, password)) {
+					cout << "login succesfully!" << endl;
+				}
+			}
+			catch (string) {
+				cout << "couldnt sign in" << endl;
+			}
 
-			cout << "Enter id: ";
-			getline(cin, id);
-
-			//Admin admin(username, password, fullname, id);
-			adminManager.SignIn(username, password);
 			int admin_second_choice;
-			cout << "1.Add new food to menu\n2.Show Menu\n3.Increase the number of ingredient\n4.Show all food in stock\n5.See budget\n6.Show ingredint in stock";
+			cout << "1.Add new food to menu\n2.Show Menu\n3.Increase the number of ingredient\n";
+			cout << "4.Show all food in stock\n5.See budget\n6.Show ingredint in stock\n";
+			cout << "7.Read from file\n";
 			cin >> admin_second_choice;
 			cin.ignore();
 
-			if (admin_second_choice == 1) { //add food
+			if (admin_second_choice == 1) {
 				string foodName, description;
 				double price;
 				int ingredientCount;
@@ -801,31 +710,28 @@ void main() {
 				cin >> ingredientCount;
 				cin.ignore();
 
-			
 				Food newFood(foodName, description, price);
 				admin.AddNewFood(menu, foodName, description, price, ingredientCount, stock, budget);
+
+				// Fayla yaz
+				writetofile(foodName, description, price, ingredientCount);
 			}
-			else if (admin_second_choice == 2) { //show menu
+			else if (admin_second_choice == 2) {
 				admin.ShowMenu(menu, stock);
 			}
 			else if (admin_second_choice == 3) {
 				string name;
-				double amount;
-				double pricePerGram;
+				double amount, pricePerGram;
 
 				cout << "Ingredient adını daxil edin: ";
 				getline(cin, name);
-
 				cout << "Əlavə etmək istədiyiniz miqdarı (qramla) daxil edin: ";
 				cin >> amount;
-
 				cout << "1 qram üçün qiyməti daxil edin: ";
 				cin >> pricePerGram;
 
-				// Ingredienti artırırıq (əgər yoxdursa, əlavə edir)
 				stock.IncreaseIngredientQuantity(name, amount, pricePerGram);
-
-				cout << name << " ingredienti stokda yeniləndi.\n";			
+				cout << name << " ingredienti stokda yeniləndi.\n";
 			}
 			else if (admin_second_choice == 4) {
 				stock.ShowAllFoods();
@@ -833,28 +739,36 @@ void main() {
 			else if (admin_second_choice == 5) {
 				budget.ShowBalance();
 			}
-			else if (admin_second_choice == 6) {//in gredientlere baxmaq stockdaki
+			else if (admin_second_choice == 6) {
 				stock.ShowIngredients();
 			}
+			else if (admin_second_choice == 7) {
+				try {
+					readfromfile();
+				}
+				catch (const exception& e) {
+					cout << "Xəta: " << e.what() << endl;
+				}
+			}
 		}
-		else if (first_choice == 2) {//user teref
+		else if (first_choice == 2) {
 			int user_account;
-			cout << "1. Sign in sytsem\n2.Sign up\n3.Change Password: ";
+			cout << "1. Sign in system\n2.Sign up\n3.Change Password: ";
 			cin >> user_account;
 
 			string user_username, user_password;
 			cin.ignore();
 			cout << "Enter your username: ";
 			getline(cin, user_username);
-
 			cout << "Enter your password: ";
 			getline(cin, user_password);
-			if(user_account==1){
-				try{
+
+			if (user_account == 1) {
+				try {
 					userManager.SignIn(user_username, user_password);
 					cout << "Ugurla giris edildi!\n";
 				}
-				catch(const exception& e){
+				catch (const exception& e) {
 					cout << "Xəta baş verdi: " << e.what() << endl;
 				}
 			}
@@ -878,20 +792,18 @@ void main() {
 				catch (const exception& e) {
 					cout << "Xəta baş verdi: " << e.what() << endl;
 				}
-
 			}
-			
+
 			int user_second_choice;
-			cout << "\n1. Show menu and add food to basket\n2. View Basket\n";
-			cout << "2. View basket\n";
+			cout << "\n1. Show menu and add food to basket\n2. View basket\n";
 			cout << "0. Exit\n";
 			cout << "Enter your choice: ";
 			cin >> user_second_choice;
 			cin.ignore();
+
 			if (user_second_choice == 1) {
 				for (int i = 0; i < menu.Size(); i++) {
-					cout << i + 1 << ") " << menu[i].GetName()
-						<< " - $" << menu[i].GetPrice() << endl;
+					cout << i + 1 << ") " << menu[i].GetName() << " - $" << menu[i].GetPrice() << endl;
 				}
 				user.ShowMenu(menu, stock);
 				cout << "enter food number to add basket: ";
@@ -924,14 +836,14 @@ void main() {
 					int foodIndex;
 					cout << "İngrediyentlərini dəyişmək istədiyiniz yeməyin nömrəsini daxil edin: ";
 					cin >> foodIndex;
-
 					card.ModifyFoodIngredients(foodIndex - 1);
 				}
 				else if (user_card_choice == 3) {
-					card.ConfirmOrder(user_wallet, budget);;
+					card.ConfirmOrder(user_wallet, budget);
 				}
 			}
 		}
 	}
-}
 
+	return 0;
+}
