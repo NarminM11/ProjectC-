@@ -7,30 +7,8 @@
 using namespace std;
 
 //file system food
-void writetofile(string name, string desc, double price, int ingredients) {
-	ofstream fs("text.txt", ios::app); 
-	if (fs.is_open()) {
-		fs << name << " | " << desc << " | " << price << " | " << ingredients << endl;
-		fs.close();
-	}
-	else {
-		throw runtime_error("file couldn't open!!!");
-	}
-}
 
-void readfromfile() {
-	ifstream fs("text.txt");
-	if (fs.is_open()) {
-		string line;
-		while (getline(fs, line)) {
-			cout << line << endl;
-		}
-		fs.close();
-	}
-	else {
-		throw runtime_error("file couldn't open!!!");
-	}
-}
+
 //file system ingredients
 void writetofileIngredients(string name, double quantity, double price) {
 	ofstream fs("ingredients.txt", ios::app);
@@ -617,6 +595,10 @@ public:
 			throw invalid_argument("Password must be longer than 8 characters.");
 		}
 	}
+	// User class içində
+	void SetWallet(const Wallet& wallet) {
+		this->wallet = wallet;
+	}
 
 	//methods
 
@@ -678,18 +660,18 @@ public:
 		if (SearchUser(username) != -1) {
 			throw runtime_error("This user already exists");
 		}
-
 		if (username.length() <= 10) {
 			throw invalid_argument("username should be longer than 10");
 		}
-
 		if (password.length() <= 8) {
-			throw invalid_argument("password should be more than 8 character");
+			throw invalid_argument("password should be more than 8 characters");
 		}
 
 		User newUser(username, password);
 		users.AddEnd(newUser);
+		SaveUsersToFile(); // Hər yeni istifadəçidən sonra fayla yaz
 	}
+
 
 	bool SignIn(const string& username, const string& password) {
 		if (username == "admin") {
@@ -742,9 +724,64 @@ public:
 		}
 		return -1;
 	}
+	void SaveUsersToFile(const string& filename = "users.txt") {
+		std::ofstream file(filename);
+		if (!file.is_open()) {
+			throw runtime_error("Failed to open user file for writing.");
+		}
+		for (int i = 0; i < users.Size(); ++i) {
+			file << users.At(i).GetUsername() << "," << users.At(i).GetPassword() << "\n";
+		}
+		file.close();
+	}
+
+	// Fayldan oxu
+	void LoadUsersFromFile(const string& filename = "users.txt") {
+		std::ifstream file(filename);
+		if (!file.is_open()) {
+			return;
+		}
+		string line;
+		while (getline(file, line)) {
+			size_t commaPos = line.find(',');
+			if (commaPos != string::npos) {
+				string username = line.substr(0, commaPos);
+				string password = line.substr(commaPos + 1);
+				User user(username, password);
+				users.AddEnd(user);
+			}
+		}
+		file.close();
+	}
 };
 
 
+
+
+
+void writetofile(string name, string desc, double price, int ingredients) {
+	ofstream fs("menu.txt", ios::app);
+	if (fs.is_open()) {
+		fs << name << " | " << desc << " | " << price << " | " << ingredients << endl;
+		fs.close();
+	}
+	else {
+		throw runtime_error("file couldn't open!!!");
+	}
+}
+
+void readfromfile() {
+	DoubleLinkedList<Food>menu;
+	ifstream file("menu.txt");
+	string name, description;
+	double price;
+
+	while (file >> name >> description >> price) {
+		Food food(name, description, price);
+		menu.AddEnd(food);
+	}
+	file.close();
+}
 int main() {
 	cout << "-------------------------------------------------" << endl;
 	cout << "|                                               |" << endl;
@@ -754,6 +791,7 @@ int main() {
 
 	DoubleLinkedList<Food> menu;
 	UserManager userManager;
+	userManager.LoadUsersFromFile();
 	Admin admin;
 	User user;
 	Stock stock;
@@ -762,6 +800,7 @@ int main() {
 	Wallet user_wallet(50);
 	int first_choice;
 	Ingredient ingredient;
+	user.SetWallet(user_wallet); 
 
 	while (true) {
 		cout << "1.Admin\n2.User: ";
@@ -796,7 +835,7 @@ int main() {
 				cin.ignore();
 
 
-				if (admin_second_choice == 1) {
+				if (admin_second_choice == 1) { //add new food
 					string foodName, description;
 					double price;
 					int ingredientCount;
@@ -820,11 +859,11 @@ int main() {
 
 				}
 
-				else if (admin_second_choice == 2) {
+				else if (admin_second_choice == 2) { //show menu
 					admin.ShowMenu(menu, stock);
 					readfromfile();
 				}
-				else if (admin_second_choice == 3) {
+				else if (admin_second_choice == 3) { //increase 
 					string name;
 					double amount, pricePerGram;
 

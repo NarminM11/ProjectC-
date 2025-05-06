@@ -3,3 +3,10 @@ kjd | 1 | 1 |
 kljc | 1 | 100 | 
 kjcas | 10 | 11 | 
 kjcas | 10 | 11 | 
+dkjw | 11 | 1 | 
+dkjw | 11 | 1 | 
+dk | 1 | 1 | 
+ksd | 1 | 1 | 
+ksd | 1 | 1 | 
+cheese | 100 | 2 | 
+cheese | 100 | 2 | 
