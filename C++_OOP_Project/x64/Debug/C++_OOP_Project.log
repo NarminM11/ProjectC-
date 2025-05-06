@@ -1,36 +1,6 @@
 ﻿  FileName.cpp
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(157,20): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(158,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(316,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(537,24): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(623,24): warning C4566: character represented by universal-character-name '\u0130' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(623,24): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(623,24): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(627,27): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(627,27): warning C4566: character represented by universal-character-name '\u015F' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(627,27): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(631,27): warning C4566: character represented by universal-character-name '\u015F' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(631,27): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(631,27): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(726,13): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(728,13): warning C4566: character represented by universal-character-name '\u018F' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(728,13): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(728,13): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(730,13): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(734,21): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(750,14): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(772,14): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(772,14): warning C4566: character represented by universal-character-name '\u015F' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(778,14): warning C4566: character represented by universal-character-name '\u011F' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(778,14): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(781,14): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(781,14): warning C4566: character represented by universal-character-name '\u015F' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(790,14): warning C4566: character represented by universal-character-name '\u011F' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(793,14): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(793,14): warning C4566: character represented by universal-character-name '\u015F' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(832,14): warning C4566: character represented by universal-character-name '\u0131' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(832,14): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(837,14): warning C4566: character represented by universal-character-name '\u0130' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(837,14): warning C4566: character represented by universal-character-name '\u0259' cannot be represented in the current code page (1252)
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(837,14): warning C4566: character represented by universal-character-name '\u015F' cannot be represented in the current code page (1252)
+C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(268,20): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(269,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(394,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(639,24): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   C++_OOP_Project.vcxproj -> C:\Users\Ferid\Desktop\C++\C++_OOP_Project\x64\Debug\C++_OOP_Project.exe

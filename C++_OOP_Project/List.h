@@ -60,6 +60,15 @@ public:
 		}
 		size++;
 	}
+	bool IsEmpty() const {
+		return head == nullptr;
+	}
+
+	void Clear() {
+		while (!IsEmpty()) {
+			DeleteEnd();
+		}
+	}
 
 	void AddEnd(const T& data) {
 		Node* node = new Node(data);

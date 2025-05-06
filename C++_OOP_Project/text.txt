@@ -1,2 +1,26 @@
 pizza 12
 pizza | tasty pizza | 12 | 1
+pizza | tasty pizza | 12 | 1
+kabab | tasty kabab | 20 | 1
+pizza | tasty | 12 | 1
+plov | plov | 19 | 2
+dolma | tasty | 10 | 1
+pizza | tasty pizza | 12 | 1
+pizaz | alksdjfwn | 12 | 1
+plov | knca | 1 | 1
+salad | dadli salad | 15 | 1
+piza | jad | 11 | 1
+kjdc  | ckd | 11 | 1
+jkcqd | kdc | 11 | 1
+kjc | jkdw | 1 | 1
+lkcd | lkcj | 11 | 1
+jdkc | dcvkj  | 1 | 1
+kv | vkwdjm | 11 | 1
+kjv | vkjs | 1 | 1
+klcds | kcd | 11 | 1
+kjcd | kjda | 11 | 1
+wjd | qadcjo | 1 | 1
+kjdcw | kcds | 1 | 1
+kjci | okasjc | 11 | 1
+kjc | jcn | 11 | 1
+kmcjd | nmmjcdwskl | 11 | 1
