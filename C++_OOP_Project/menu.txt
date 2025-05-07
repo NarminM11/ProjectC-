@@ -1,1 +1,6 @@
 pizza | margaritta pizza | 12 | 1
+pizza | jda | 11 | 1
+sushi | sushi | 11 | 1
+sushu | sushi | 11 | 1
+pizza | tomato | 1 | 1
+sushi | tasty sushi | 11 | 1

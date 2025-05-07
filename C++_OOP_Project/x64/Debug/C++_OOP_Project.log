@@ -1,6 +1,6 @@
 ﻿  FileName.cpp
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(246,20): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(247,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(372,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(621,24): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(397,26): warning C4566: character represented by universal-character-name '\u2011' cannot be represented in the current code page (1252)
+C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(440,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(574,36): warning C4566: character represented by universal-character-name '\u202F' cannot be represented in the current code page (1252)
+C:\Users\Ferid\Desktop\C++\C++_OOP_Project\C++_OOP_Project\FileName.cpp(682,24): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   C++_OOP_Project.vcxproj -> C:\Users\Ferid\Desktop\C++\C++_OOP_Project\x64\Debug\C++_OOP_Project.exe
